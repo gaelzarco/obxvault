@@ -1,5 +1,7 @@
 ### Mutual Exclusion (Mutex)
 
+#### [CodeSandbox](https://codesandbox.io/p/devbox/thread-safe-mutex-qc8wfm)
+
 Allows one thread to access data at a time.
 - A thread asks for access to the data by acquiring a lock.
 	- A lock keeps track of who has access to the data.
