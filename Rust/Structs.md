@@ -1,7 +1,7 @@
 ### IN PROGRESS
 ### [RUST: STRUCTS (5:30)](https://www.youtube.com/watch?v=MDT9vNjtGsY&list=PLAJ-sYO1aGdxQ_skPPtJ7PlSAjTXM-atv&index=7)
 
-Common data structure that allow you lto group up related values that represent something meaningful in your programs.
+Common data structure that allow you to group up related values that represent something meaningful in your programs.
 
 Structs are similar to Tuples
 - Tuples have multiple elements that may be different types.
