@@ -22,9 +22,19 @@ fn main() {
     }
 }
 ```
-_This piece of code creates a new thread for each request. This is unsafe and leaved us vulnerable to attacks._
+_This piece of code creates a new thread for each request. This is unsafe and leaves us vulnerable to attacks._
 
 To implement a finite number of threads, we'll create a struct, `ThreadPool`, to define a specific number of available threads
+
+```rust
+pub struct ThreadPool;
+
+impl ThreadPool {
+    pub fn new(size: usize) -> ThreadPool {
+        ThreadPool
+    }
+}
+```
 
 Then edit main.rs file to bring ThreadPool into scope from the library crate by adding the following code to the top of src/main.rs:
 
@@ -32,17 +42,35 @@ Filename: src/main.rs
 ```rust
 use hello::ThreadPool;
 ```
+
+This is what our implementation of ThreadPool should look like:
+```rust
+fn main() {
+    let listener = TcpListener::bind("127.0.0.1:7878").unwrap();
+    let pool = ThreadPool::new(4);
+
+    for stream in listener.incoming() {
+        let stream = stream.unwrap();
+
+        pool.execute(|| {
+            handle_connection(stream);
+        });
+    }
+}
+```
+
 This code still won’t work, but let’s check it again to get the next error that we need to address:
 
 ```rust
 $ cargo check
     Checking hello v0.1.0 (file:///projects/hello)
-error[E0599]: no function or associated item named `new` found for struct `ThreadPool` in the current scope
-  --> src/main.rs:12:28
+error[E0599]: no method named `execute` found for struct `ThreadPool` in the current scope
+  --> src/main.rs:17:14
    |
-12 |     let pool = ThreadPool::new(4);
-   |                            ^^^ function or associated item not found in `ThreadPool`
+17 |         pool.execute(|| {
+   |              ^^^^^^^ method not found in `ThreadPool`
 
 For more information about this error, try `rustc --explain E0599`.
 error: could not compile `hello` due to previous error
+
 ```
