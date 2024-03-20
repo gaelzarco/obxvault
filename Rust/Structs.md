@@ -1,5 +1,3 @@
-### IN PROGRESS
-### [RUST: STRUCTS (5:30)](https://www.youtube.com/watch?v=MDT9vNjtGsY&list=PLAJ-sYO1aGdxQ_skPPtJ7PlSAjTXM-atv&index=7)
 
 A struct, or structure, is a custom data type that lets you package together and name multiple related values that make up a meaningful group. If you’re familiar with an object-oriented language, a struct is like an object’s data attributes
 
@@ -110,7 +108,7 @@ _The name of the arg taken by the function must match the name of the field in t
 
 __In the User struct definition we used the owned String type rather than the &str string slice type. This is a deliberate choice because we want each instance of this struct to own all of its data and for that data to be valid for as long as the entire struct is valid.__
 
-__It’s also possible for structs to store references to data owned by something else, but to do so requires the use of lifetimes. Lifetimes ensure that the data referenced by a struct is valid for as long as the struct is.__
+__It’s also possible for structs to store references to data owned by something else, but to do so requires the use of lifetimes.Lifetimes ensure that the data referenced by a struct is valid for as long as the struct is.__
 
 ### Tuple Structs
 
@@ -138,3 +136,5 @@ fn main() {
     let subject = AlwaysEqual;
 }
 ```
+
+![[Pasted image 20240213225101.png]]
