@@ -13,7 +13,7 @@ enum IpAddrKind {
 
 Enums also allow you to insert data directly into each enum variant and can save you the trouble of implementing a struct and defining an address type:
 ```rust
-// Enums are cool
+// Enums are cool[[NeoVim]]
 #[derive(Debug)]
 enum IpAddrKind {
     V4(String),
