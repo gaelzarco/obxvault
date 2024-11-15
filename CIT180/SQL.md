@@ -1,4 +1,4 @@
-Data in a SQL table is stores in a row that contains exactly one #tuple . A table is made up of one or more columns that independently describe the name, data type and attribute of the tuples.
+Data in a SQL table is stored in a row that contains exactly one #tuple . A table is made up of one or more columns that independently describe the name, data type and attribute of the tuples.
 
 The structure of the table, also known as #relation_schema, is defined by the attributes, or columns of the table.
 
