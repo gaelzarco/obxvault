@@ -66,3 +66,6 @@ Frame types composed of:
 #### Base Framing Protocol
 Authoritative wireframe for data transfer
 ![[Pasted image 20241114212826.png]]
+
+[Section 5.2 Base Framing Protocol](https://www.rfc-editor.org/rfc/rfc6455#section-4.2.2)
+

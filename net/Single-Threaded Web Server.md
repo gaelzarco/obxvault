@@ -1,4 +1,4 @@
-- [ ] The two main concepts involved in web servers are _TCP (Transmission Control Protocol)_ and _HTTP (Hypertext Transfer Protocol)_. Both are _request-response_ protocols.
+The two main concepts involved in web servers are _TCP (Transmission Control Protocol)_ and _HTTP (Hypertext Transfer Protocol)_. Both are _request-response_ protocols.
 
 TCP is the lower-level protocol that describes the details of how information gets from one server to another but doesn’t specify what that information is. HTTP builds on top of TCP by defining the contents of the requests and responses. It’s technically possible to use HTTP with other protocols, but in the vast majority of cases, HTTP sends its data over TCP. We’ll work with the raw bytes of TCP and HTTP requests and responses.
 

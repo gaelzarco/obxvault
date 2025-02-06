@@ -30,7 +30,7 @@ On the left: a pointer to the memory that holds the contents of the string, a le
 
 On the right is the memory on the heap that holds the contents.
 
-![[assets/Pasted image 20240121160756.png]]
+![[Pasted image 20240121160756.png]]
 
 The length is how much memory, in bytes, is used by `String`. The capacity is the total amount of memory, in bytes, that the `String` has received from the allocator. These are important distinctions
 
