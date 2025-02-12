@@ -1,6 +1,6 @@
 ## Chapter 2
 ### 2.1 Architecture
-The pipeline stages execute in parallel with each stage dependent upon thr result of the previous stage.
+The pipeline stages execute in parallel with each stage dependent upon the result of the previous stage.
 
 Four main stages:
 1. Application
@@ -81,13 +81,7 @@ _Since a CPU itself is pipelined on a much smaller scale, you could say that the
 Executes on the GPU for most per-triangle/per-vertex operation.
 
 Divided into functional stages:
-┌────────────────────┐ ┌────────────────────┐ ┌────────────────────┐ ┌────────────────────┐
-│                    │ │                    │ │                    │ │                    │
-│                    │ │                    │ │                    │ │                    │
-│   Vertex Shading   ┼─►    Projection      ┼─►     Clipping       ┼─►  Screen Mapping    │
-│                    │ │                    │ │                    │ │                    │
-│                    │ │                    │ │                    │ │                    │
-└────────────────────┘ └────────────────────┘ └────────────────────┘ └────────────────────┘
+
 _Pipeline of functional stages_
 
 #### Vertex Shading
