@@ -2,18 +2,21 @@ Intended to establish a connection with a server of pre-existing protocols such 
 
 Intended to fail when data from other protocols is sent to WS server.
 - Fields such as |Sec-| cannot be set by an attacker from we web browser using only HTML and JS APIs
-#### TCP AND HTTP
+### TCP AND HTTP
+
 Independent TCP-based protocol
 - Only relationship to HTTP is the handshake is interpreted by an HTTP server as an Upgrade Request.
 - Uses port 80 by default and 443 for WS connection tunneled over Transport Layer Security (TLS)
 - Connection over 443 are significantly more likely to succeed
 
 #### Establishing Connections
+
 When a connection is made to a port shared by an HTTP server (likely to occur using port 80 and 443), it will appear as a `GET` request with an `Upgrade` offer.
 - One IP address and single server allows for practical deployment.
 - Elaborate set-ups (load balancers and multi-server), dedicated hosts for WS connections, separate from HTTP servers, is most likely easiest to manage.
 
 #### Subprotocols
+
 Client can opt-in via |Sec-WebSocket-Protocol| field in handshake.
 - Server must respond with same field of one of the selected subprotocols.
 - Versioning supported, backward-incompatible
@@ -21,6 +24,7 @@ Client can opt-in via |Sec-WebSocket-Protocol| field in handshake.
 	- reusing existing subprotocol string and handling subprotocol different would be necessary.
 
 #### WS URIs
+
 This specification defines two URI schemes, using the ABNF syntax defined in RFC 5234 [RFC5234], and terminology and ABNF productions defined by the URI specification RFC 3986 [RFC3986].
 
     ws-URI = "ws:" "//" host [ ":" port ] path [ "?" query ]
@@ -34,6 +38,7 @@ This specification defines two URI schemes, using the ABNF syntax defined in RFC
 The port component is OPTIONAL; the default for "ws" is port 80, while the default for "wss" is port 443.
 
 #### Client Requirements
+
 /host/, /port/, /resource name/ and /secure/ flag must be passed along with /protocols/ and /extensions/ to be used.
 - Requires /origin/ if client is web browser.
 
@@ -43,8 +48,9 @@ Not focusing on this as much as I am only implementing the server functionality 
 
 [Section 4: Opening Handshake](https://www.rfc-editor.org/rfc/rfc6455#section-1.5)
 
-## Data Framing
+### Data Framing
 #### Overview
+
 Data is transmitted in frames. 
 
 Server __MUST NOT__ mask frames sent to client
@@ -64,6 +70,7 @@ Frame types composed of:
 	- Together define "Payload data"
 
 #### Base Framing Protocol
+
 Authoritative wireframe for data transfer
 ![[Pasted image 20241114212826.png]]
 
