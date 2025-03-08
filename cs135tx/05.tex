@@ -17,6 +17,7 @@
   backgroundcolor=\color{lgray},
   rulecolor=\color{lgray2}
 }
+
 \title{CS135; Control Structures II (Repetition)}
 \author{Gael Zarco}
 \date{\today}
@@ -33,7 +34,7 @@ C++ has three repetition, or looping, structures that allow you to repeat a set 
 while (expression)
 	statement;
 \end{lstlisting}
-\textit{Statments can be simple or compound statements.}
+\textit{Statement can be simple or compound statement.}
 
 \vspace{8pt}
 Execution Flow:
@@ -119,7 +120,7 @@ Last entry in a set of data is known as the \textbf{sentinel} and this value
 tells the loop to stop.
 
 \begin{itemize}
-  \item if \texttt{item != sentinel} execute \texttt{statement}.
+  \item if \texttt{item != sentinel} $\rightarrow$ \texttt{statement}.
 \end{itemize}
 
 The \texttt{while} loop continues to execute as long as the program has not read
@@ -228,11 +229,15 @@ while(!infile.eof()) {
 
 \section{\texttt{for} Looping (Repetition) Structure}
 
+A counter-focused looping structure.
+
 \begin{lstlisting}[language=C++, caption={\texttt{for} Loop Syntax}]
 for(initial statement; loop condition; update statement)
   statement;
 \end{lstlisting}
+\textit{Statement can be a simple or compound statement.}
 
+\vspace{8pt}
 The \texttt{initial statement}, \texttt{loop condition}, and \texttt{update
 statement} control the \texttt{statement} of the \texttt{for} loop.
 \begin{itemize}
@@ -245,5 +250,102 @@ Execution Flow:
     \includegraphics[width=0.9\textwidth]{for-exec-flow.png}
 \end{center}
 
-\end{document}
+The \texttt{for} loop executes as follows:
+\begin{enumerate}
+  \item The \texttt{initial statement} executes.
+  \item The \texttt{loop condition} is evaluated. If the \texttt{loop condition} evaluates
+to \texttt{true}:
+  \begin{itemize}
+    \item Execute the \texttt{for} loop statement.
+    \item Execute the \texttt{update statement}.
+  \end{itemize}
+\item Repeat \textit{Step 2} until the \texttt{loop condition} evaluates to 
+    \texttt{false}.
+\end{enumerate}
 
+The \texttt{initial statement} usually initializes a variable (called the
+\textbf{\texttt{for} loop control}, or \textbf{\texttt{for} indexed variable}).
+
+\vspace{8pt}
+Caveats:
+\begin{itemize}
+  \item If the \texttt{loop condition} is initially \texttt{false}, the loop body does not execute.
+  \item The \texttt{for} loop body executes indefinitely if the \texttt{loop condition}
+is always \texttt{true}.
+  \item You can omit all three statements; however, the \texttt{for} statement
+    must contain two semicolons \textit{(Listing 10)}.
+\end{itemize}
+
+\begin{lstlisting}[language=C++, caption={\texttt{for} Loop Gotcha}]
+for (;;)
+  cout << "Hello" << endl;
+\end{lstlisting}
+
+\section{\texttt{do..while} Looping (Repetition) Structure}
+
+\begin{lstlisting}[language=C++, caption={\texttt{do..while} Loop Syntax}]
+do
+  statement
+while(expression);
+\end{lstlisting}
+\textit{Statement can be a simple or compound statement.}
+
+\vspace{8pt}
+Execution Flow:
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{do-while-exec-flow.png}
+\end{center}
+
+The \texttt{statement} executes first, then the \texttt{expression} is
+evaluated.
+\begin{itemize}
+  \item As long as the \texttt{expression} evaluates to \texttt{true}, the loop
+    continues.
+\end{itemize}
+In a \texttt{while} and \texttt{for} loop, the \texttt{loop condition} is
+evaluated \textit{before} executing the body of the loop.
+\begin{itemize}
+  \item \texttt{while} and \texttt{for} loops are called \textbf{Pretest Loops}.
+  \item \texttt{do...while} loops are called \textbf{Posttest Loops}.
+\end{itemize}
+
+\subsection{Choosing the Correct Looping Structure}
+\begin{itemize}
+  \item If you know the number of repetitions needed $\rightarrow$ \texttt{for} loop.
+  \item If you do not know and it \textbf{could be 0} $\rightarrow$ \texttt{while} loop.
+  \item If you do not know and it is \textbf{at least 1} $\rightarrow$ \texttt{do...while} loop.
+\end{itemize}
+
+\section{\texttt{break} and \texttt{continue} Statements}
+
+\vspace{8pt}
+The \texttt{break} statement is typically used for two purposes:
+\begin{enumerate}
+  \item To exit early from a loop.
+  \item To skip the remainder of the \texttt{switch} structure.
+\end{enumerate}
+
+After the \texttt{break} statement executes, the program continues to execute
+with the first statement after the structure.
+
+\vspace{8pt}
+The \texttt{continue} statement is used in all 3 loop structures:
+\begin{enumerate}
+  \item \texttt{while}
+  \item \texttt{for}
+  \item \texttt{do...while}
+\end{enumerate}
+
+When the \texttt{continue} statement is executed in a loop, it skips the
+remaining statements in the loop and proceeds with the next iteration of the loop. 
+
+\vspace{8pt}
+Differences between loops:
+\begin{itemize}
+  \item \texttt{do..while} and \texttt{while} $\rightarrow$ \texttt{expression}
+    is evaluated immediately after \allowbreak \texttt{continue} statement.
+  \item \texttt{for} $\rightarrow$ \texttt{update statement} is executed after
+    \texttt{continue} statement $\rightarrow$ \texttt{loop condition} executes.
+\end{itemize}
+
+\end{document}
