@@ -1,0 +1,193 @@
+\documentclass{article}
+\usepackage{listings, xcolor}
+\setlength{\parindent}{0pt}
+
+\definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{lgray2}{rgb}{0.75, 0.75, 0.75}
+
+\lstset{
+  aboveskip=10pt,
+  belowskip=10pt,
+  frame=leftline,
+  xleftmargin=15pt,
+  framexleftmargin=20pt,
+  breaklines=true,
+  backgroundcolor=\color{lgray},
+  rulecolor=\color{lgray2}
+}
+\title{CS135; 05}
+\author{Gael Zarco}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\section{\texttt{while} Looping (Repetition) Structure}
+
+\begin{lstlisting}[language=C++, caption={\texttt{while} Loop Syntax}]
+while (expression)
+	statement;
+\end{lstlisting}
+\textit{Statments can be simple or compound statements.}
+
+\vspace{8pt}
+\texttt{expression} acts as a \textbf{Decision Maker} and is usually a logical expression.
+\begin{itemize}
+    \item Provides an entry condition to the loop.
+    \item If initially \texttt{true}, loop starts.
+    \item Re-evaluates on each iteration, continues if \texttt{true}.
+    \item Exits loop when \texttt{false}.
+\end{itemize}
+
+\textbf{Infinite Loops} are loops that execute endlessly (no exit case).
+
+\vspace{8pt}
+\texttt{statement} is the body of the loop.
+
+\begin{lstlisting}[language=C++, caption={\texttt{while} Loop Example Program}, numbers=left]
+#include <iostream>
+
+using namespace std;
+
+int main() {
+  int calBurnedInADay;
+  int calBurnedInAWeek;
+  int day;
+
+  day = 1;
+  calBurnedInAWeek = 0;
+
+  while (day <= 7) {
+    cout << "Enter calories burned day " << day << ": ";
+    cin >> calBurnedInADay;
+    cout << endl;
+    calBurnedInAWeek = calBurnedInAWeek + calBurnedInADay;
+    day = day + 1;
+  }
+   
+  cout << "Average number of calories burned each day: "
+  << calBurnedInAWeek / 7 << endl;
+
+  return 0;
+}
+\end{lstlisting}
+
+\texttt{day} in the example program above is known as the \textbf{Loop Control
+Variable (LCV)}.
+
+\vspace{8pt}
+Loop Control Variables:
+
+\begin{enumerate}
+    \item Must be initialized before the \texttt{while} loop.
+    \item Must result in a \texttt{false} expression evaluation at a certain point.
+\end{enumerate}
+
+Be careful of where in the loop, LCVs are manipulated. This can change the behavior of the loop.
+
+\subsection{Case 1: Counter-Controlled \texttt{while} Loops}
+\textbf{Counter-Controlled \texttt{while} Loop} is a loop in
+which the LCV serves as a \textit{counter} that dictates how many times the loop iterates or executes.
+\begin{itemize}
+  \item That is, \texttt{statement} is executed \textit{n} times.
+\end{itemize}
+
+\begin{lstlisting}[language=C++, caption={Counter-Controlled \texttt{while} Loop
+  Example}, numbers=left]
+counter = 0;
+
+while (counter < N) {
+  // Code that does something...
+  counter++
+}
+\end{lstlisting}
+
+\subsection{Case 2: Sentinel-Controlled \texttt{while} Loops}
+
+Last entry in a set of data is known as the \textbf{sentinel} and this value
+tells the loop to stop.
+
+\begin{itemize}
+  \item if \texttt{item != sentinel} execute \texttt{statement}.
+\end{itemize}
+
+The \texttt{while} loop continues to execute as long as the program has not read
+the \texttt{sentinel}.
+
+\vspace{8pt}
+Such a loop is known as a \textbf{Sentinel-Controlled \texttt{while} Loop}.
+
+\begin{lstlisting}[language=C++, caption={Sentinel-Controlled \texttt{while} Loop
+  Syntax}, numbers=left]
+cin >> variable;
+
+while (variable != sentinel) {
+  // Code that does something...
+  cin >> variable;
+}
+\end{lstlisting}
+
+\subsection{Case 3: Flag-Controlled \texttt{while} Loops}
+
+\textbf{Flag-Controlled \texttt{while} Loop} uses a \texttt{bool} variable to
+control the loop.
+
+\vspace{8pt}
+A \textbf{Flag Variable} is a \texttt{bool} variable that indicates whether a
+condition is \texttt{true} or \texttt{false}.
+\begin{itemize}
+  \item Generally named for the \texttt{true} state of the condition. \textit{i.e. isFound, isTallEnough, etc}.
+\end{itemize}
+
+\begin{lstlisting}[language=C++, caption={Flag-Controlled \texttt{while} Loop
+  Example}, numbers=left]
+isFound = false;
+
+while (!isFound) {
+  // Code that does something...
+  if (expression)
+    isFound = true;
+  }
+}
+\end{lstlisting}
+
+\subsection{Case 3: Flag-Controlled \texttt{while} Loops}
+
+Until now, input stream variables such as \texttt{cin} and the extraction
+operator, \texttt{>>}, have been used to read and store data in variables.
+However, The input stream variable can also return a value after reading data,
+as follows:
+\begin{enumerate}
+  \item If the program has reached the end of the input data, the input stream
+    var returns \texttt{false}.
+  \item If the program reads any faulty data, the input stream enters the fail
+    state. Because of this, any attempt to use that stream is ignored. In this
+    case, the input stream var returns \texttt{false}.
+  \item In any other case besides (1) and (2), the input stream var returns
+    \texttt{true}.
+\end{enumerate}
+
+\textbf{EOF-Controlled \texttt{while} Loops} are best used at times where
+selecting a good sentinel value is difficult or for programs where the data-file
+is altered.
+\begin{itemize}
+  \item Someone could potentially erase the sentinel value or add past the
+    value.
+\end{itemize}
+
+\begin{lstlisting}[language=C++, caption={EOF-Controlled \texttt{while} Loop
+  Example}, numbers=left]
+cin >> variable;
+
+while (cin) {
+  // Code that does something...
+  cin >> variable;
+}
+\end{lstlisting}
+
+
+\section{...}
+
+\end{document}
+
