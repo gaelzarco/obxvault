@@ -1,5 +1,5 @@
 \documentclass{article}
-\usepackage{listings, xcolor}
+\usepackage{listings, xcolor, graphicx}
 \setlength{\parindent}{0pt}
 
 \definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
@@ -12,16 +12,20 @@
   xleftmargin=15pt,
   framexleftmargin=20pt,
   breaklines=true,
+  basicstyle=\small,
+  showstringspaces=false,
   backgroundcolor=\color{lgray},
   rulecolor=\color{lgray2}
 }
-\title{CS135; 05}
+\title{CS135; Control Structures II (Repetition)}
 \author{Gael Zarco}
 \date{\today}
 
 \begin{document}
 
 \maketitle
+
+C++ has three repetition, or looping, structures that allow you to repeat a set of statement until certain conditions are men.
 
 \section{\texttt{while} Looping (Repetition) Structure}
 
@@ -30,6 +34,12 @@ while (expression)
 	statement;
 \end{lstlisting}
 \textit{Statments can be simple or compound statements.}
+
+\vspace{8pt}
+Execution Flow:
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{while-exec-flow.png}
+\end{center}
 
 \vspace{8pt}
 \texttt{expression} acts as a \textbf{Decision Maker} and is usually a logical expression.
@@ -130,7 +140,7 @@ while (variable != sentinel) {
 
 \subsection{Case 3: Flag-Controlled \texttt{while} Loops}
 
-\textbf{Flag-Controlled \texttt{while} Loop} uses a \texttt{bool} variable to
+\textbf{Flag-Controlled \texttt{while} Loops} use a \texttt{bool} variable to
 control the loop.
 
 \vspace{8pt}
@@ -152,7 +162,7 @@ while (!isFound) {
 }
 \end{lstlisting}
 
-\subsection{Case 3: Flag-Controlled \texttt{while} Loops}
+\subsection{Case 4: EOF-Controlled \texttt{while} Loops}
 
 Until now, input stream variables such as \texttt{cin} and the extraction
 operator, \texttt{>>}, have been used to read and store data in variables.
@@ -187,7 +197,53 @@ while (cin) {
 \end{lstlisting}
 
 
-\section{...}
+\subsection{\texttt{eof} Function}
+
+The \texttt{eof} function allows you to check if you have reached the
+end-of-file status on an input stream variable.
+\begin{itemize}
+  \item Member of the data type \texttt{istream}.
+  \item Logical expression; returns a boolean value.
+\end{itemize}
+
+\begin{lstlisting}[language=C++, caption={\texttt{eof} Function Syntax}]
+istreamVar.eof()
+\end{lstlisting}
+\textit{istreamVar is an input variable stream, such as cin}.
+
+\begin{lstlisting}[language=C++, caption={\texttt{eof} Example},
+  numbers=left]
+ifstream infile;
+char ch;
+
+infile.open("inputDat.dat");
+
+infile.get(ch);
+
+while(!infile.eof()) {
+  cout << ch;
+  infile.get(ch);
+}
+\end{lstlisting}
+
+\section{\texttt{for} Looping (Repetition) Structure}
+
+\begin{lstlisting}[language=C++, caption={\texttt{for} Loop Syntax}]
+for(initial statement; loop condition; update statement)
+  statement;
+\end{lstlisting}
+
+The \texttt{initial statement}, \texttt{loop condition}, and \texttt{update
+statement} control the \texttt{statement} of the \texttt{for} loop.
+\begin{itemize}
+  \item These are known as the \texttt{for} loop control statements.
+\end{itemize}
+
+\vspace{8pt}
+Execution Flow:
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{for-exec-flow.png}
+\end{center}
 
 \end{document}
 
