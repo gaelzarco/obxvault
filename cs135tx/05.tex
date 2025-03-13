@@ -1,11 +1,12 @@
 \documentclass{article}
-\usepackage{listings, xcolor, graphicx}
+\usepackage{listings, xcolor, graphicx, inconsolata}
 \setlength{\parindent}{0pt}
 
 \definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
 \definecolor{lgray2}{rgb}{0.75, 0.75, 0.75}
 
 \lstset{
+  language=C++,
   aboveskip=10pt,
   belowskip=10pt,
   frame=leftline,
@@ -15,7 +16,14 @@
   basicstyle=\small,
   showstringspaces=false,
   backgroundcolor=\color{lgray},
-  rulecolor=\color{lgray2}
+  rulecolor=\color{lgray2},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{green},
+  numbers=left,               
+  numberstyle=\tiny\color{gray},
+  stepnumber=1
 }
 
 \title{CS135; Control Structures II (Repetition)}
@@ -30,7 +38,7 @@ C++ has three repetition, or looping, structures that allow you to repeat a set 
 
 \section{\texttt{while} Looping (Repetition) Structure}
 
-\begin{lstlisting}[language=C++, caption={\texttt{while} Loop Syntax}]
+\begin{lstlisting}[caption={\texttt{while} Loop Syntax}]
 while (expression)
 	statement;
 \end{lstlisting}
@@ -56,7 +64,7 @@ Execution Flow:
 \vspace{8pt}
 \texttt{statement} is the body of the loop.
 
-\begin{lstlisting}[language=C++, caption={\texttt{while} Loop Example Program}, numbers=left]
+\begin{lstlisting}[caption={\texttt{while} Loop Example Program}]
 #include <iostream>
 
 using namespace std;
@@ -104,8 +112,8 @@ which the LCV serves as a \textit{counter} that dictates how many times the loop
   \item That is, \texttt{statement} is executed \textit{n} times.
 \end{itemize}
 
-\begin{lstlisting}[language=C++, caption={Counter-Controlled \texttt{while} Loop
-  Example}, numbers=left]
+\begin{lstlisting}[caption={Counter-Controlled \texttt{while} Loop
+  Example}]
 counter = 0;
 
 while (counter < N) {
@@ -129,8 +137,8 @@ the \texttt{sentinel}.
 \vspace{8pt}
 Such a loop is known as a \textbf{Sentinel-Controlled \texttt{while} Loop}.
 
-\begin{lstlisting}[language=C++, caption={Sentinel-Controlled \texttt{while} Loop
-  Syntax}, numbers=left]
+\begin{lstlisting}[caption={Sentinel-Controlled \texttt{while} Loop
+  Syntax}]
 cin >> variable;
 
 while (variable != sentinel) {
@@ -151,8 +159,8 @@ condition is \texttt{true} or \texttt{false}.
   \item Generally named for the \texttt{true} state of the condition. \textit{i.e. isFound, isTallEnough, etc}.
 \end{itemize}
 
-\begin{lstlisting}[language=C++, caption={Flag-Controlled \texttt{while} Loop
-  Example}, numbers=left]
+\begin{lstlisting}[caption={Flag-Controlled \texttt{while} Loop
+  Example}]
 isFound = false;
 
 while (!isFound) {
@@ -187,8 +195,8 @@ is altered.
     value.
 \end{itemize}
 
-\begin{lstlisting}[language=C++, caption={EOF-Controlled \texttt{while} Loop
-  Example}, numbers=left]
+\begin{lstlisting}[caption={EOF-Controlled \texttt{while} Loop
+  Example}]
 cin >> variable;
 
 while (cin) {
@@ -207,13 +215,12 @@ end-of-file status on an input stream variable.
   \item Logical expression; returns a boolean value.
 \end{itemize}
 
-\begin{lstlisting}[language=C++, caption={\texttt{eof} Function Syntax}]
+\begin{lstlisting}[caption={\texttt{eof} Function Syntax}]
 istreamVar.eof()
 \end{lstlisting}
 \textit{istreamVar is an input variable stream, such as cin}.
 
-\begin{lstlisting}[language=C++, caption={\texttt{eof} Example},
-  numbers=left]
+\begin{lstlisting}[caption={\texttt{eof} Example}]
 ifstream infile;
 char ch;
 
@@ -231,7 +238,7 @@ while(!infile.eof()) {
 
 A counter-focused looping structure.
 
-\begin{lstlisting}[language=C++, caption={\texttt{for} Loop Syntax}]
+\begin{lstlisting}[caption={\texttt{for} Loop Syntax}]
 for(initial statement; loop condition; update statement)
   statement;
 \end{lstlisting}
@@ -276,14 +283,14 @@ is always \texttt{true}.
     must contain two semicolons \textit{(Listing 10)}.
 \end{itemize}
 
-\begin{lstlisting}[language=C++, caption={\texttt{for} Loop Gotcha}]
+\begin{lstlisting}[caption={\texttt{for} Loop Gotcha}]
 for (;;)
   cout << "Hello" << endl;
 \end{lstlisting}
 
 \section{\texttt{do..while} Looping (Repetition) Structure}
 
-\begin{lstlisting}[language=C++, caption={\texttt{do..while} Loop Syntax}]
+\begin{lstlisting}[caption={\texttt{do..while} Loop Syntax}]
 do
   statement
 while(expression);
@@ -330,11 +337,11 @@ with the first statement after the structure.
 
 \vspace{8pt}
 The \texttt{continue} statement is used in all 3 loop structures:
-\begin{enumerate}
+\begin{itemize}
   \item \texttt{while}
   \item \texttt{for}
   \item \texttt{do...while}
-\end{enumerate}
+\end{itemize}
 
 When the \texttt{continue} statement is executed in a loop, it skips the
 remaining statements in the loop and proceeds with the next iteration of the loop. 
@@ -342,9 +349,9 @@ remaining statements in the loop and proceeds with the next iteration of the loo
 \vspace{8pt}
 Differences between loops:
 \begin{itemize}
-  \item \texttt{do..while} and \texttt{while} $\rightarrow$ \texttt{expression}
-    is evaluated immediately after \allowbreak \texttt{continue} statement.
-  \item \texttt{for} $\rightarrow$ \texttt{update statement} is executed after
+  \item \texttt{do..while} and \texttt{while}: \texttt{expression}
+    is evaluated immediately after \texttt{continue} \allowbreak statement.
+  \item \texttt{for}: \texttt{update statement} is executed after
     \texttt{continue} statement $\rightarrow$ \texttt{loop condition} executes.
 \end{itemize}
 
