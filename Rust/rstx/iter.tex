@@ -1,0 +1,135 @@
+\documentclass{article}
+\usepackage{listings, color, xcolor, graphicx, inconsolata}
+\setlength{\parindent}{0pt}
+
+\definecolor{BlackText}{RGB}{110,107,94}
+\definecolor{RedTypename}{RGB}{182,86,17}
+\definecolor{GreenString}{RGB}{96,172,57}
+\definecolor{PurpleKeyword}{RGB}{184,84,212}
+\definecolor{GrayComment}{RGB}{170,170,170}
+\definecolor{GoldDocumentation}{RGB}{180,165,45}
+\definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{lgray2}{rgb}{0.75, 0.75, 0.75}
+
+\lstdefinelanguage{rust} {
+    columns=fullflexible,
+    keepspaces=true,
+    frame=single,
+    framesep=0pt,
+    framerule=0pt,
+    framexleftmargin=4pt,
+    framexrightmargin=4pt,
+    framextopmargin=5pt,
+    framexbottommargin=3pt,
+    xleftmargin=4pt,
+    xrightmargin=4pt,
+    basicstyle=\ttfamily\color{BlackText},
+    keywords={
+        true,false,
+        unsafe,async,await,move,
+        use,pub,crate,super,self,mod,
+        struct,enum,fn,const,static,let,mut,ref,type,impl,dyn,trait,where,as,
+        break,continue,if,else,while,for,loop,match,return,yield,in
+    },
+    keywordstyle=\color{PurpleKeyword},
+    ndkeywords={
+        bool,u8,u16,u32,u64,u128,i8,i16,i32,i64,i128,char,str,
+        Self,Option,Some,None,Result,Ok,Err,String,Box,Vec,Rc,Arc,Cell,RefCell,HashMap,BTreeMap,
+        macro_rules
+    },
+    ndkeywordstyle=\color{RedTypename},
+    comment=[l][\color{GrayComment}\slshape]{//},
+    morecomment=[s][\color{GrayComment}\slshape]{/*}{*/},
+    morecomment=[l][\color{GoldDocumentation}\slshape]{///},
+    morecomment=[s][\color{GoldDocumentation}\slshape]{/*!}{*/},
+    morecomment=[l][\color{GoldDocumentation}\slshape]{//!},
+    morecomment=[s][\color{RedTypename}]{\#![}{]},
+    morecomment=[s][\color{RedTypename}]{\#[}{]},
+    stringstyle=\color{GreenString},
+    string=[b]"
+}
+
+\lstset{
+  language=rust,
+  aboveskip=10pt,
+  belowskip=10pt,
+  frame=leftline,
+  xleftmargin=15pt,
+  framexleftmargin=20pt,
+  breaklines=true,
+  basicstyle=\small,
+  showstringspaces=false,
+  backgroundcolor=\color{lgray},
+  rulecolor=\color{lgray2},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{green},
+  numbers=left,               
+  numberstyle=\tiny\color{gray},
+  stepnumber=1
+}
+
+\title{Template; Rust Programming Language}
+\author{Gael Zarco}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+A sample template for note-taking in Rust.
+
+\section{Introduction and \texttt{main} function}
+
+\begin{lstlisting}[caption={Example Program}]
+fn main() {
+    println!("Hello, World!");
+}
+\end{lstlisting}
+\textit{Outputs "Hello World!" to the terminal.}
+
+% \vspace{8pt}
+% Title
+% \begin{center}
+%     \includegraphics[width=0.9\textwidth]{}
+% \end{center}
+
+\vspace{8pt}
+The \textbf{Rust Prgramming Language} is a programming language with an emphasis on
+memory-safety and speed.
+\begin{itemize}
+    \item Utilizes a paradigm known as \textbf{Ownership}.
+    \item Memory managed by the \textbf{Borrow Checker}.
+\end{itemize}
+
+Always contains a \texttt{main} function.
+
+\subsection{Subection}
+
+\texttt{if program !contain main} $\rightarrow$ \texttt{error}.
+
+\begin{lstlisting}[caption={\texttt{main} Function Syntax}]
+fn main (..args) {
+    statement(s)
+}
+\end{lstlisting}
+
+\section{\textbf{Borrowing} and \textbf{Ownership}}
+
+Rust's ownership system ensures memory safety without a garbage collector by enforcing strict rules on how values are accessed and modified.
+
+\begin{itemize}
+  \item \textbf{Ownership}: Every value in Rust has a single owner, and when the owner goes out of scope, the value is dropped.
+  \item \textbf{Borrowing}: Allows references to use a value without taking ownership, preventing multiple mutable references at the same time.
+  \item \textbf{Mutable vs Immutable Borrowing}: Multiple immutable references
+  \texttt{\&T} are allowed, but only one mutable reference \texttt{\&mut T} can exist at a time.
+  \item \textbf{Lifetimes}: Ensure borrowed references do not outlive the data they point to, preventing dangling references.
+\end{itemize}
+
+\section{Summary}
+
+Rust is a powerful programming language with an emphasis on speed and memory
+safety.
+
+\end{document}
