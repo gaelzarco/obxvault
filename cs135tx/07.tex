@@ -26,7 +26,8 @@
   stepnumber=1
 }
 
-\title{CS135; User-Defined Functions Cont}
+\title{CS135; User-Defined Simple Data Types, Namespaces, and the
+\texttt{string} Type}
 \author{Gael Zarco}
 \date{\today}
 
@@ -34,238 +35,302 @@
 
 \maketitle
 
-% SECTION 1 %
-\section{Void Functions}
-\texttt{void} functions do not have a \texttt{functionType} and do not have any
-\textit{formal parameters}.
+C++ simple data types are split intro three categories:
+\begin{enumerate}
+  \item Integral
+  \item Floating-point
+  \item \texttt{enum}
+\end{enumerate}
 
-\begin{lstlisting}[caption={Function Definition}]
-  void functionName(formal parameter list) {
-    statements
+\begin{lstlisting}
+ using namespace std;
+\end{lstlisting}
+The above is used in every C++ program that follows the ANSI/ISO Standard C++
+header files.
+
+% SECTION 1 %
+\section{Enumerations}
+Data-types allow you to specify what values are legal and tell the user what
+kinds of operations are allowed on those values. Enumerations allow you to
+create simple data types.
+
+\vspace{8pt}
+The \textbf{Enumeration Type} requires the following:
+\begin{enumerate}
+  \item A name for the data type.
+  \item A set of values for the data type.
+  \item A set of operations on the values.
+\end{enumerate}
+
+\begin{lstlisting}[caption={Enumeration Syntax}]
+  enum typeName {value1, value2, ...};
+\end{lstlisting}
+
+\begin{itemize}
+  \item \texttt{value1, value2, ...} are indentifiers called
+    \textbf{enumerators}.
+  \item \texttt{enum} is a reserved word in C++.
+  \item The values between the braces can have a specified order between them.
+    \begin{itemize}
+      \item This mean the enumeration type is an ordered set of values.
+      \item The default value assigned to these enumerators starts at 0.
+        Increments for every value thereafter.
+    \end{itemize}
+  \item The enumerators are \textbf{NOT} variables.
+\end{itemize}
+
+% SECTION 1.1 %
+\subsection{Declaring Variables}
+Once a data type is defined, you can declare variables of that type.
+
+\begin{lstlisting}[caption={\texttt{enum} Variable Declaration Syntax}]
+  dataType identifier, identifier, ...; 
+
+  \\ Example
+  enum sports {BASKETBALL, FOOTBALL, SOCCER, BASEBALL, VOLLEYBALL};
+\end{lstlisting}
+
+The following statement declares \texttt{popularSport} and \texttt{mySport} to
+be of type \texttt{sports}.
+
+% SECTION 1.2 %
+\subsection{Assignment}
+Once the var is declared, you can store values in it.
+
+\begin{lstlisting}[caption={\texttt{enum} Variable Assignment}]
+  popularSport = FOOTBALL;
+
+  // Copy the value of popularSport to mySport
+  mySport = popularSport;
+\end{lstlisting}
+
+% SECTION 1.3 %
+\subsection{Operations on Enumeration Types}
+No arithmatic operations are allowed on the enumeration type. This includes the
+increment and decrement operator. Use a cast when necessary:
+
+\begin{lstlisting}[caption={\texttt{enum} Cast Example}]
+  popularSport = static_cast<sports>(popularSport + 1);
+\end{lstlisting}
+
+This statement advances the the value of \texttt{popularSport} to the next
+value in the list.
+
+% SECTION 1.4 %
+\subsection{Relational Operators}
+Because an enumeration is ordered, relational operators can be used.
+
+\begin{lstlisting}[caption={Enumeration Type Relational Operator Example}]
+  FOOTBALL <= SOCCER    \\ true
+\end{lstlisting}
+
+% SECTION 1.5 %
+\subsection{Enumeration Types and Loops}
+Enumeration type is an integral type and can be used to increment, decrement,
+and compare the values of the enumeration type (using cast).
+
+\begin{lstlisting}[caption={Enumeration Type Loop}]
+  for (mySport = BASKETBALL; mySport <= VOLLEYBALL; mySport = 
+    static_cast<sports>(mySport + 1))
+\end{lstlisting}
+
+% SECTION 1.6 %
+\subsection{Input/Output of Enumeration Types}
+The enumeration type cannot be used for neither input or output (directly).
+
+% SECTION 1.7 %
+\subsection{Functions and Enumeration Types}
+The enumeration type can be passed as a param to funcs by value or reference.
+Funcs can also return a value of the enum type.
+
+\begin{lstlisting}[caption={\texttt{enum} Types in Functions}]
+  void printEnum(courses registered) {
+    switch (registered) {
+    case ALGEBRA:
+    cout << "Algebra";
+    break;
+    case ANALYSIS:
+    cout << "Analysis";
+    break;
+    case BASIC:
+    cout << "Basic";
+    break;
+    case CHEMISTRY:
+    cout << "Chemistry";
+    break;
+    case CPP:
+    cout << "CPP";
+    break;
+    case HISTORY:
+    cout << "History";
+    break;
+    case PYTHON:
+    cout << "Python";
+    break;
+    case PHILOSOPHY:
+    cout << "Philosophy";
+    }    //end switch
+  }      //end printEnum
+\end{lstlisting}
+
+% SECTION 1.8 %
+\subsection{Declaring Variables When Defining the Enumeration Type}
+\begin{lstlisting}[caption={Simultaneous \texttt{enum} Declaration and Variable
+Declaration}]
+  enum grades {A, B, C, D, F} courseGrade;
+\end{lstlisting}
+
+This listing defines an enumeration type, \texttt{grades} and declares a
+variable \texttt{courseGrade} of type \texttt{grades}.
+
+% SECTION 1.9 %
+\subsection{Anonymous Data Types}
+A data type where you directly specify values in the variable declaration with
+no type name is called an \textbf{Anonymous Type}.
+\begin{lstlisting}[caption={Anonymous Enumeration Type Example}]
+  // No name is given to the data type
+  enum {BASKETBALL, FOOTBALL, BASEBALL, HOCKEY} mySport;
+\end{lstlisting}
+
+Drawbacks:
+\begin{enumerate}
+  \item Anonymous data types cannot be passed as params to a func and a func can
+    not return an anonymous data type.
+  \item Values used in one anon data type can be used in a separate anon data
+    type, but variables of those types are treated differently.
+\end{enumerate}
+
+\begin{lstlisting}[caption={illegal \texttt{enum} operations}]
+  enum {english, french, spanish, german, russian} languages;
+  enum {english, french, spanish, german, russian} foreignlanguages;
+
+  languages = foreignlanguages;    // illegal
+\end{lstlisting}
+
+% SECTION 1.10 %
+\subsection{\texttt{typedef} Statement}
+You can create synonyms or aliases to a previously defined data type by using
+the \texttt{typedef} statement.
+
+\begin{lstlisting}[caption={\texttt{typedef} Statement Syntax}]
+  typedef existingTypeName newTypeName;
+\end{lstlisting}
+
+\begin{itemize}
+  \item \texttt{typedef} is a reserved word.
+    \begin{itemize}
+      \item Does not create any new data type; only creates an alias to the
+        existing type.
+    \end{itemize}
+\end{itemize}
+
+% SECTION 2 %
+\section{Namespaces}
+When a header file such as \texttt{iostream} is included in the program, the
+global identifiers in the header file also become global identifiers in the
+program.
+
+\begin{itemize}
+  \item This means that the compiler may return a syntax error if a global
+    identifier is redefined.
+  \item Third-party libraries and other software usually add a special character
+    to the beginning of their global identifiers to avoid compiler errors.
+    \begin{itemize}
+      \item Do not do this in your own code.
+    \end{itemize}
+\end{itemize}
+
+ANSI/ISO Standard C++ tries to solve this problem of overlapping identifiers
+with the \texttt{namespace} mechanism.
+
+\begin{lstlisting}[caption={\texttt{namespace} Statement Syntax}]
+  namespace namespace_name {
+    members
   }
 \end{lstlisting}
 
-User-defined void functions can be placed either before or after the function
-\texttt{main}.
+Where \texttt{members} is usually named constants, variable declarations,
+functions or another \texttt{namespace}.
+
 \begin{itemize}
-  \item If placed after \texttt{main} $\rightarrow$ \textit{function prototype}
-    required.
-  \item Does not have a \textit{return type}.
-    \begin{itemize}
-      \item \texttt{return} statement without any value is typically used to
-        exit the function early.
-    \end{itemize}
-\end{itemize}
-\textbf{Coding Standard}: Functions are protoyped before \texttt{main} and
-defined after \texttt{main}. Non-recursive functions should have
-\textbf{ONE} \texttt{return} statement.
-
-\subsection{Syntax}
-\begin{lstlisting}[caption={Formal Parameter List Syntax}]
-  dataType& variable, dataType& variable, ...
-\end{lstlisting}
-
-\texttt{\&} in the listing above means \textit{some} parameters will have
-\texttt{\&} and some will not.
-
-\begin{lstlisting}[caption={Function Call Syntax}]
-  functionName(actual parameter list);
-\end{lstlisting}
-
-\begin{lstlisting}[caption={Actual Parameter List Syntax}]
-  expression or variable, expression or variable, ...
-\end{lstlisting}
-
-\subsection{Parameter Types}
-\begin{itemize}
-  \item \textbf{Value Parameters}: Formal parameters that receive a copy of the
-    content of the corresponding actual parameters.
-  \item \textbf{Reference Parameters}: Formal parameters that receive a copy of
-    the location (memory address) of the corresponding actual parameter.
+  \item \texttt{namespace} is a reserved word.
 \end{itemize}
 
-When attaching \texttt{\&} after the \texttt{dataType} in the formal parameter list
-of a function, the variable after that \texttt{dataType} becomes a reference
-parameter.
+\begin{lstlisting}[caption={\texttt{namespace} Example}]
+  namespace globalType {
+    const int N = 10;
+    const double RATE = 7.50;
+    int count = 0;
+    void printResult();
+  }
+\end{lstlisting}
 
-% SECTION 2 %
-\section{Value Parameters}
-When function is called, for a value param, the actual value of the param is
-copied into the corresponding formal param. Meaning, there is no connection
-between the two as they are now separate entities. Therefore, the formal param
-is manipulated with its own copy of the data.
+This listing defined \texttt{globalType} to be a \texttt{namespace} with four
+members with their respective types.
+
+\begin{itemize}
+  \item The scope of a \texttt{namespace} member is local to \texttt{namespace}.
+\end{itemize}
+
+To use a \texttt{namespace} member, you may:
+
+\begin{enumerate}
+  \item Use \texttt{namespace::identifier} (scope resolution operator).
+  \item Use a \texttt{using} statement.
+\end{enumerate}
+
+\begin{lstlisting}[caption={\texttt{using} Statement Syntax (Two Ways)
+}]
+  using namespace namespace_name;
+
+  using namespace::identifier;
+\end{lstlisting}
 
 % SECTION 3 %
-\section{Reference Variables as Parameters}
-Reference params receive the address (memory location) of the actual
-param and enable direct manipulation of the actual param.
+\section{\texttt{string} Type}
+The \texttt{string} type is a programmer-defined type and is not part of the C++
+language; The C++ standard library supplies it. Therefore you must include the
+header file in your program.
 
-Useful in three situations, when:
-\begin{itemize}
-  \item actual param needs to be altered.
-  \item you want to return more than one value from a func
-    (\texttt{return} statements can return only \textbf{ONE} value).
-  \item passing the address would save memory space and time relative to
-    copying a large amount of data.
-\end{itemize}
-
-Remember to attach \texttt{\&} after the \texttt{dataType} in the formal param
-list of a function to convert the following \texttt{variable} into a reference
-param.
-
-% SECTION 4 %
-\section{Value and Reference Parameters and Memory Allocation}
-\textbf{Local Variables} are vars declared in the body of the function and are
-allocated in the function data area. During data manip, the address stored in
-the formal param directs the computer to manip the data of the \textit{memory
-cell} of that address (reference param). Value params possess a copy of the
-actual param. Therefore, reference params can permanently change the value of
-the actual param while value params cannot.
-
-% SECTION 5 %
-\section{Reference Params and Value-Returning Functions}
-You can use reference params in value-returning functions, although it is not
-recommended. Try converting it to a void function instead. If a function needs
-to return more than one value, also convert it to a void function and use
-appropriate reference params.
-
-% SECTION 6 %
-\section{Scope of An Identifier}
-\textbf{Scope} of an identifier refers to where in the program an identifier is
-accessible (identifier is the name of something in C++).
-
-\begin{itemize}
-  \item \textbf{Local Identifier}: Identifiers declared within a func/block
-     $\rightarrow$ not accessible outside of the func/block.
-  \item \textbf{Global Identifier}: Identifiers delcared outside of every func
-    definition.
-\end{itemize}
-
-\textbf{C++ Does not allow nesting of functions}.
-
-\vspace{8pt}
-Rules when an identifier is accessed:
-\begin{enumerate}
-  \item Global identifierss accessible by func/block if:
-  \begin{itemize}
-    \item The identifier is declared before the func definition.
-    \item The func name is different than the identifier.
-    \item All func params have names different names than the identifier.
-    \item All local identifiers (such as local vars) have names different than
-      the name of the identifier.
-  \end{itemize}
-  \item \textbf{Nested Block} An identifier within a block is accessible:
-  \begin{itemize}
-    \item Only within the block and not at any point before or after.
-    \item By blocks that are nested within that block, as long as the identifier
-      does not share a name with the root block.
-  \end{itemize}
-\end{enumerate}
-
-Notes about global variables:
-\begin{enumerate}
-  \item Some compilers initialize global vars to default values.
-  \item \textbf{Scope Resolution Operator} in C++ is \texttt{::}
-  \item By using scope resolution operator:
-  \begin{itemize}
-    \item A global var declared before the func/block definition can be accessed
-      by the func/block even if the func/block has an identifier with the same
-      name as the globar var.
-  \end{itemize}
-  \item To access a global var declared after the func definition, the func must
-    not contain any identifier with the same name.
-  \begin{itemize}
-    \item Reserved word \texttt{extern} indicates that a global var has been
-      declared elsewhere.
-  \end{itemize}
-\end{enumerate}
-
-% SECTION 7 %
-\section{Global Variables, Named Constants, and Side Effects}
-A func that uses global variables is not independent.
-
-\vspace{8pt}
-If more than one func uses the same global var:
-\begin{itemize}
-  \item It can make it difficult to debug code.
-  \item Problems caused in one area of the program can appear in a separate form
-    in another.
-\end{itemize}
-
-Global named constants have no side effects.
-
-\vspace{8pt}
-\textbf{Coding Standard}: Global variables are prohibited at all times.
-Global constants are acceptable.
-
-% SECTION 8 %
-\section{Static and Automatic Variables}
-\begin{itemize}
-  \item \textbf{Automatic Variable}: Memory is allocated at block entry and
-    deallocated upon block exit.
-  \begin{itemize}
-    \item By default, variables declared within a block are automatic variables. 
-  \end{itemize}
-  \item \textbf{Static Variable}: Memory remains allocated as long as the
-    program executes.
-  \begin{itemize}
-    \item Global variables declared outside of any block are \texttt{static}
-      variables.
-  \end{itemize}
-\end{itemize}
-
-Use reserved word \texttt{static} to delcare a \texttt{static} var.
-
-\begin{lstlisting}[caption={\texttt{static} Variable Declaration}]
-  static dataType identifier;
+\begin{lstlisting}[caption={\texttt{string} Type Example}]
+  string name = "Gael Zarco":
 \end{lstlisting}
 
-% SECTION 9 %
-\section{Using Drivers and Stubs}
-A \textbf{Driver} is a separate program used to test a function.
+\begin{itemize}
+  \item Strings are sequences of zero or more characters, therefore each
+    charcter has an assigned position starting with 0 (0, 1, 2, etc.).
+  \item Strings can store just about any size string. 
+  \item The binary \texttt{+} operator and the array index (subscript) 
+    \texttt{[]} operator are defined operations for strings.
+\end{itemize}
+
+The \textbf{Array Subscript Operator} resembles \texttt{[]} and can be used to
+access a position of a character within a string.
+
+\begin{lstlisting}[caption={Indexing Into A \texttt{string}}]
+  string str1 = "Hello there";
+
+  // Strings begin at index 0, 6 affects the 5th char
+  str1[6] = 'T';
+\end{lstlisting}
+
+% SECTION 3.1 %
+\subsection{Additional \texttt{string} Operations}
+
+\begin{itemize}
+  \item \texttt{string} has a data type \texttt{$string::size_type$}.
+  \item \texttt{string} had a named constant \texttt{string::npos}.
+\end{itemize}
+
+\begin{tabular}{|l|p{8.3cm}|}
+\hline
+\texttt{string::size\_type} & An unsigned integer (data) type \\ \hline
+\texttt{string::npos} & The maximum value of the (data) type \texttt{string::size\_type}, a number such as \texttt{4294967295} on many machines \\ \hline
+\end{tabular}
 
 \vspace{8pt}
-When results calculated by one func are needed in another, use a
-\textbf{Function Stub}.
-\begin{itemize}
-  \item A func stub is a function that is not fully coded.
-\end{itemize}
+There are many more functions for string manipulation:
 
-% SECTION 10 %
-\section{Function Overloading}
-In a C++ program, several functions can have the same name. \textbf{Function
-Overloading} occurs when creating several functions with the same name.
-
-\vspace{8pt}
-Two funcs are said to have \textbf{different formal param lists} if
-both funcs have either:
-\begin{itemize}
-  \item A different number of params.
-  \item Conflicting \texttt{dataType} of formal params in atleast one instance.
-\end{itemize}
-
-Overloaded funcs must have different formal param lists. The \textbf{signature}
-is the name and formal param list of the func. The param list supplied in a call
-to an overloaded func determines which one is executed.
-
-% SECTION 11 %
-\section{Functions with Default Parameters}
-In a func call, the number of actual and formal params must be the same.
-\begin{itemize}
-  \item C++ relaxed this condition for funcs with default params. 
-  \item Can specify the value of a default param in the \textit{function
-    prototype}. 
-  \item If a value for a default param is not specified in a func call, the
-    default value is used.
-\end{itemize}
-
-All default params must be the rightmost parameters of the func.
-\begin{itemize}
-  \item If default vaulue is not specified $\rightarrow$ You must omit all of
-    the arguments to its right. 
-\end{itemize}
-
-Default values can be constants, global vars, or func calls. You cannot,
-however, assign a constant value as a default value to a reference param.
+% TODO - INCLUDE IMAGES (str-funcs-1 & str-funcs-2) %
 
 \end{document}

@@ -1,0 +1,271 @@
+\documentclass{article}
+\usepackage{listings, xcolor, graphicx, inconsolata}
+\setlength{\parindent}{0pt}
+
+\definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{lgray2}{rgb}{0.75, 0.75, 0.75}
+
+\lstset{
+  language=C++,
+  aboveskip=10pt,
+  belowskip=10pt,
+  frame=leftline,
+  xleftmargin=15pt,
+  framexleftmargin=20pt,
+  breaklines=true,
+  basicstyle=\small,
+  showstringspaces=false,
+  backgroundcolor=\color{lgray},
+  rulecolor=\color{lgray2},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{green},
+  numbers=left,               
+  numberstyle=\tiny\color{gray},
+  stepnumber=1
+}
+
+\title{CS135; User-Defined Functions Cont}
+\author{Gael Zarco}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% SECTION 1 %
+\section{Void Functions}
+\texttt{void} functions do not have a \texttt{functionType} and do not have any
+\textit{formal parameters}.
+
+\begin{lstlisting}[caption={Function Definition}]
+  void functionName(formal parameter list) {
+    statements
+  }
+\end{lstlisting}
+
+User-defined void functions can be placed either before or after the function
+\texttt{main}.
+\begin{itemize}
+  \item If placed after \texttt{main} $\rightarrow$ \textit{function prototype}
+    required.
+  \item Does not have a \textit{return type}.
+    \begin{itemize}
+      \item \texttt{return} statement without any value is typically used to
+        exit the function early.
+    \end{itemize}
+\end{itemize}
+\textbf{Coding Standard}: Functions are protoyped before \texttt{main} and
+defined after \texttt{main}. Non-recursive functions should have
+\textbf{ONE} \texttt{return} statement.
+
+\subsection{Syntax}
+\begin{lstlisting}[caption={Formal Parameter List Syntax}]
+  dataType& variable, dataType& variable, ...
+\end{lstlisting}
+
+\texttt{\&} in the listing above means \textit{some} parameters will have
+\texttt{\&} and some will not.
+
+\begin{lstlisting}[caption={Function Call Syntax}]
+  functionName(actual parameter list);
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Actual Parameter List Syntax}]
+  expression or variable, expression or variable, ...
+\end{lstlisting}
+
+\subsection{Parameter Types}
+\begin{itemize}
+  \item \textbf{Value Parameters}: Formal parameters that receive a copy of the
+    content of the corresponding actual parameters.
+  \item \textbf{Reference Parameters}: Formal parameters that receive a copy of
+    the location (memory address) of the corresponding actual parameter.
+\end{itemize}
+
+When attaching \texttt{\&} after the \texttt{dataType} in the formal parameter list
+of a function, the variable after that \texttt{dataType} becomes a reference
+parameter.
+
+% SECTION 2 %
+\section{Value Parameters}
+When function is called, for a value param, the actual value of the param is
+copied into the corresponding formal param. Meaning, there is no connection
+between the two as they are now separate entities. Therefore, the formal param
+is manipulated with its own copy of the data.
+
+% SECTION 3 %
+\section{Reference Variables as Parameters}
+Reference params receive the address (memory location) of the actual
+param and enable direct manipulation of the actual param.
+
+Useful in three situations, when:
+\begin{itemize}
+  \item actual param needs to be altered.
+  \item you want to return more than one value from a func
+    (\texttt{return} statements can return only \textbf{ONE} value).
+  \item passing the address would save memory space and time relative to
+    copying a large amount of data.
+\end{itemize}
+
+Remember to attach \texttt{\&} after the \texttt{dataType} in the formal param
+list of a function to convert the following \texttt{variable} into a reference
+param.
+
+% SECTION 4 %
+\section{Value and Reference Parameters and Memory Allocation}
+\textbf{Local Variables} are vars declared in the body of the function and are
+allocated in the function data area. During data manip, the address stored in
+the formal param directs the computer to manip the data of the \textit{memory
+cell} of that address (reference param). Value params possess a copy of the
+actual param. Therefore, reference params can permanently change the value of
+the actual param while value params cannot.
+
+% SECTION 5 %
+\section{Reference Params and Value-Returning Functions}
+You can use reference params in value-returning functions, although it is not
+recommended. Try converting it to a void function instead. If a function needs
+to return more than one value, also convert it to a void function and use
+appropriate reference params.
+
+% SECTION 6 %
+\section{Scope of An Identifier}
+\textbf{Scope} of an identifier refers to where in the program an identifier is
+accessible (identifier is the name of something in C++).
+
+\begin{itemize}
+  \item \textbf{Local Identifier}: Identifiers declared within a func/block
+     $\rightarrow$ not accessible outside of the func/block.
+  \item \textbf{Global Identifier}: Identifiers delcared outside of every func
+    definition.
+\end{itemize}
+
+\textbf{C++ Does not allow nesting of functions}.
+
+\vspace{8pt}
+Rules when an identifier is accessed:
+\begin{enumerate}
+  \item Global identifierss accessible by func/block if:
+  \begin{itemize}
+    \item The identifier is declared before the func definition.
+    \item The func name is different than the identifier.
+    \item All func params have names different names than the identifier.
+    \item All local identifiers (such as local vars) have names different than
+      the name of the identifier.
+  \end{itemize}
+  \item \textbf{Nested Block} An identifier within a block is accessible:
+  \begin{itemize}
+    \item Only within the block and not at any point before or after.
+    \item By blocks that are nested within that block, as long as the identifier
+      does not share a name with the root block.
+  \end{itemize}
+\end{enumerate}
+
+Notes about global variables:
+\begin{enumerate}
+  \item Some compilers initialize global vars to default values.
+  \item \textbf{Scope Resolution Operator} in C++ is \texttt{::}
+  \item By using scope resolution operator:
+  \begin{itemize}
+    \item A global var declared before the func/block definition can be accessed
+      by the func/block even if the func/block has an identifier with the same
+      name as the globar var.
+  \end{itemize}
+  \item To access a global var declared after the func definition, the func must
+    not contain any identifier with the same name.
+  \begin{itemize}
+    \item Reserved word \texttt{extern} indicates that a global var has been
+      declared elsewhere.
+  \end{itemize}
+\end{enumerate}
+
+% SECTION 7 %
+\section{Global Variables, Named Constants, and Side Effects}
+A func that uses global variables is not independent.
+
+\vspace{8pt}
+If more than one func uses the same global var:
+\begin{itemize}
+  \item It can make it difficult to debug code.
+  \item Problems caused in one area of the program can appear in a separate form
+    in another.
+\end{itemize}
+
+Global named constants have no side effects.
+
+\vspace{8pt}
+\textbf{Coding Standard}: Global variables are prohibited at all times.
+Global constants are acceptable.
+
+% SECTION 8 %
+\section{Static and Automatic Variables}
+\begin{itemize}
+  \item \textbf{Automatic Variable}: Memory is allocated at block entry and
+    deallocated upon block exit.
+  \begin{itemize}
+    \item By default, variables declared within a block are automatic variables. 
+  \end{itemize}
+  \item \textbf{Static Variable}: Memory remains allocated as long as the
+    program executes.
+  \begin{itemize}
+    \item Global variables declared outside of any block are \texttt{static}
+      variables.
+  \end{itemize}
+\end{itemize}
+
+Use reserved word \texttt{static} to delcare a \texttt{static} var.
+
+\begin{lstlisting}[caption={\texttt{static} Variable Declaration}]
+  static dataType identifier;
+\end{lstlisting}
+
+% SECTION 9 %
+\section{Using Drivers and Stubs}
+A \textbf{Driver} is a separate program used to test a function.
+
+\vspace{8pt}
+When results calculated by one func are needed in another, use a
+\textbf{Function Stub}.
+\begin{itemize}
+  \item A func stub is a function that is not fully coded.
+\end{itemize}
+
+% SECTION 10 %
+\section{Function Overloading}
+In a C++ program, several functions can have the same name. \textbf{Function
+Overloading} occurs when creating several functions with the same name.
+
+\vspace{8pt}
+Two funcs are said to have \textbf{different formal param lists} if
+both funcs have either:
+\begin{itemize}
+  \item A different number of params.
+  \item Conflicting \texttt{dataType} of formal params in atleast one instance.
+\end{itemize}
+
+Overloaded funcs must have different formal param lists. The \textbf{signature}
+is the name and formal param list of the func. The param list supplied in a call
+to an overloaded func determines which one is executed.
+
+% SECTION 11 %
+\section{Functions with Default Parameters}
+In a func call, the number of actual and formal params must be the same.
+\begin{itemize}
+  \item C++ relaxed this condition for funcs with default params. 
+  \item Can specify the value of a default param in the \textit{function
+    prototype}. 
+  \item If a value for a default param is not specified in a func call, the
+    default value is used.
+\end{itemize}
+
+All default params must be the rightmost parameters of the func.
+\begin{itemize}
+  \item If default vaulue is not specified $\rightarrow$ You must omit all of
+    the arguments to its right. 
+\end{itemize}
+
+Default values can be constants, global vars, or func calls. You cannot,
+however, assign a constant value as a default value to a reference param.
+
+\end{document}
