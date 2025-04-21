@@ -347,7 +347,7 @@ array. Useful \texttt{string} functions:
 \end{itemize}
 
 % SECTION 5.1 %
-\subsection{String Comparison}
+\subsection{\texttt{string} Comparison}
 C-Strings are compared character by character using the collating system
 sequence. Use the \texttt{strcmp} function to compare strings.
 
@@ -355,10 +355,10 @@ sequence. Use the \texttt{strcmp} function to compare strings.
 
 If using ASCII char set:
 \begin{itemize}
-  \item "Air" < "Boat"
-  \item "Air" < "An"
-  \item "Bill" < "Billy"
-  \item "Hello" < "hello"
+  \item "Air" \textless{} "Boat"
+  \item "Air" \textless{} "An"
+  \item "Bill" \textless{} "Billy"
+  \item "Hello" \textless{} "hello"
 \end{itemize}
 
 % SECTION 5.2 %
@@ -368,7 +368,7 @@ C++ \textbf{DOES} allow aggregate ops for the input and output of C-strings.
 
 
 % SECTION 5.3 %
-\subsection{String Input}
+n\subsection{\texttt{string} Input}
 \begin{lstlisting}[caption={String Input Example}]
   cin >> name;
 \end{lstlisting}
@@ -387,7 +387,7 @@ newline character is not stored.
 \end{itemize}
 
 % SECTION 5.4 %
-\subsection{String Output}
+\subsection{\texttt{string} Output}
 \begin{lstlisting}[caption={String Output Example}]
   cout << name;
 \end{lstlisting}
@@ -416,5 +416,311 @@ Argument to open function must be a null-terminated string (a C-string).
 \end{lstlisting}
 
 Where \texttt{strVar} is a variable of type \texttt{string}.
+
+
+% SECTION 6 %
+\section{Parallel Arrays}
+Two (or more) arrays are called \textbf{Parallel} if their corresponding
+comonents hold related information.
+
+
+\begin{lstlisting}[caption={Parallel Array Example}]
+  // Stores the values from a 2 column data set file into 2 separate arrays.
+  // Each index of each array refers to the same student (therefore parallel).
+  int noOfStudents = 0;
+
+  infile >> studentId[noOfStudents] >> courseGrade[noOfStudents];
+
+  while (inFile && noOfStudents < 50) {
+    noOfStudents++;
+    inFile >> studentId[noOfStudents]
+    >> courseGrade[noOfStudents];
+  }
+\end{lstlisting}
+
+% SECTION 7 %
+\section{Two- and Multidimensional Arrays}
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{nD-arr-data-ex.png}
+\end{center}
+
+Storing the data set above would require a 1D array of 30 components of type
+\texttt{int}. The first five of which would store the first row of the table,
+then the next 5, and so on.
+\begin{itemize}
+  \item This allows you to simulate the table within a 1D array.
+  \item Not efficient and can be messy and hard to manage.
+\end{itemize}
+
+\textbf{Two-dimensional Arrays} are a collection of a fixed number of components
+arranged in rows and columns, where all components are of the same type.
+
+\begin{lstlisting}[caption={Two-Dimensional Array Syntax}]
+  dataType arrayName[intExp1] [intExp2];
+\end{lstlisting}
+
+Where, \texttt{intExp1} and \texttt{intExp2} are constant expressions yielding
+positive integer values.
+
+\begin{lstlisting}[caption={Two-Dimensional Array Example}]
+  double sales[10] [5];
+\end{lstlisting}
+
+\begin{itemize}
+  \item The \textit{rows} are numbered 0-9
+  \item The \textit{columns} are numbered 0-4
+\end{itemize}
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{nD-arr-declaration-table.png}
+\end{center}
+
+% SECTION 7.1 %
+\subsection{Accessing Array Components}
+
+\begin{lstlisting}[caption={Two-Dimensional Array Indexing Syntax}]
+  arrayName[indexExp1] [indexExp2];
+\end{lstlisting}
+
+Where, \texttt{intExp1} and \texttt{intExp2} are constant expressions yielding
+positive integer values.
+
+\begin{itemize}
+  \item \texttt{intExp1} specifies the row position.
+  \item \texttt{intExp2} specifies the column position.
+\end{itemize}
+
+\begin{lstlisting}[caption={Two-Dimensional Array Indexing Example}]
+  sales[5][3] = 25.75;
+\end{lstlisting}
+
+Stores \texttt{25.75} into row number 5 and column number 3 of the array
+/texttt{sales}.
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{nD-arr-sales-ex.png}
+\end{center}
+
+\begin{lstlisting}[caption={Two-Dimensional Array Indexing With Vars Example}]
+  sales[i][j] = 25.75;
+\end{lstlisting}
+
+% SECTION 7.2 %
+\subsection{Two-Dimensional Array Initialization During Declaration}
+\begin{lstlisting}[caption={Two-Dimensional Array Initialization Example}]
+  int board[4][3] = {
+    {2, 3, 1},
+    {15, 25, 13},
+    {20, 4, 7},
+    {11, 18, 14}
+  };
+\end{lstlisting}
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{2D-arr-board-init.png}
+\end{center}
+
+To initialize a two-dimensional array when it is declared:
+\begin{enumerate}
+  \item The elements of each row are all enclosed within one set of curly
+    braces, separated by commas.
+  \item Set of all rows is enclosed in curly braces.
+  \item For num arrays, if all components od a row are not specified, the
+    unspecified components are initialized to \texttt{0}. At least one value is
+    needed to initialize all the components of a row.
+\end{enumerate}
+
+% SECTION 7.3 %
+\subsection{Two-Dimensional Arrays and Enumeration Types}
+You can also use enumeration type for array indices.
+
+\begin{lstlisting}[caption={Enumeration Type in Two-Dimensional Arrays Example}]
+  const int NUMBER_OF_ROWS = 6;
+  const int NUMBER_OF_COLUMNS = 5;
+
+  enum carType {GM, FORD, TOYOTA, BMW, NISSAN, VOLVO};
+  enum colorType {RED, BROWN, BLACK, WHITE, GRAY};
+
+  int inStock[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
+
+  // Inserting a value into the 2D array
+  inStock[1][3] = 15;
+
+  // This is equivalent to the above
+  inStock[FORD][WHITE] = 15;
+\end{lstlisting}
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{2D-arr-inStock-ex.png}
+\end{center}
+
+% SECTION 7.4 %
+\subsection{Processing Two-Dimensional Arrays}
+A two-dimensional array can be processed in four ways:
+\begin{enumerate}
+  \item Process a single element.
+  \item Process the entire array.
+  \item Process a particular row of the array, called \textbf{Row 
+    Processing}
+  \item Process a particular column of the array, called \textbf{Column
+    Processing}
+\end{enumerate}
+
+Each row and column of a two-dimensional array is a one-dimensional array.
+\begin{itemize}
+  \item To process, use algorithms similar to processing one-dimensional arrays.
+\end{itemize}
+
+% SECTION 7.5 %
+\subsection{Initialization}
+\begin{lstlisting}[caption={Initialize Row Number 4}]
+  row = 4;
+
+  for (col = 0; col < NUMBER_OF_COLUMNS; ++col) {
+    matrix[row][col] = 0;
+  }
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Initialize Entire Matrix}]
+  for (row = 0; row < NUMBER_OF_ROWS; ++row)  {
+    for (col = 0; col < NUMBER_OF_COLUMNS; ++col) {
+      matrix[row][col] = 0;
+    }
+  }
+\end{lstlisting}
+
+% SECTION 7.6 %
+\subsection{Print}
+\begin{lstlisting}[caption={Output Components of a Two-Dimensional Array}]
+  for (row = 0; row < NUMBER_OF_ROWS; ++row) { 
+    for (col = 0; col < NUMBER_OF_COLUMNS; ++col) {
+      cout << setw(5) << matrix[row][col] << ' '; 
+      cout << '\n';
+    }
+  }
+\end{lstlisting}
+
+% SECTION 7.7 %
+\subsection{Input}
+\begin{lstlisting}[caption={Adding Input to 4th Row}]
+  row = 4;
+
+  for (col = 0; col < NUMBER_OF_COLUMNS; ++col) {
+    cin >> matrix[row][col];
+  }
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Adding Input to Each Component of Matrix}]
+  for (row = 0; row < NUMBER_OF_ROWS; ++row) {
+    for (col = 0; col < NUMBER_OF_COLUMNS; ++col) {
+      cin >> matrix[row][col];
+    }
+  }
+\end{lstlisting}
+
+% SECTION 7.8 %
+\subsection{Sum by Row}
+\begin{lstlisting}[caption={Find the Sum of Row Number 4}]
+  sum = 0;
+  row = 4;
+
+  for (col = 0; col < NUMBER_OF_COLUMNS; ++col) {
+    sum += matrix[row][col];
+  }
+\end{lstlisting}
+
+% SECTION 7.9 %
+\subsection{Sum by Column}
+\begin{lstlisting}[caption={Find Sum of Individual Columns}]
+  // Sum of each individual row 
+  for (row = 0; row < NUMBER_OF_ROWS; ++row) {
+    sum = 0;
+
+    for (col = 0; col < NUMBER_OF_COLUMNS; ++col) {
+      sum += matrix[row][col];
+    }
+
+    cout << "Sum of row " << (row + 1) << " = " << sum << '\n';
+  }
+\end{lstlisting}
+
+% SECTION 7.10 %
+\subsection{Largest Element in Each Row and Each Column}
+\begin{lstlisting}[caption={Algorithm To Find Largest Element in Each Row}]
+  // Largest element in each row 
+  for (row = 0; row < NUMBER_OF_ROWS; ++row) {
+    largest = matrix[row][0]; // Assume the first element is largest
+
+    for (col = 1; col < NUMBER_OF_COLUMNS; ++col) {
+      if (matrix[row][col] > largest) {
+        largest = matrix[row][col];
+      }
+
+    cout << "The largest element in row " << row << " = " << largest << '\n';
+  }
+\end{lstlisting}
+
+% SECTION 7.11 %
+\subsection{Passing Two-Dimensional Arrays as Parameters to Functions}
+Two-dimensional arrays are passed by reference as parameters to a function.
+\begin{itemize}
+  \item The base address is passed to the formal parameter.
+  \item Stored in \textbf{Row Order Form}.
+\end{itemize}
+
+When declaring the array as a formal parameter, omit the size of the first
+dimension, but not the second.
+
+% SECTION 7.12 %
+\subsection{Array of Strings}
+Strings in C++ can be manipulated using either the data type \texttt{string} or
+character arrays (C-strings).
+
+% SECTION 7.13 %
+\subsection{Array of Strings and the \texttt{string} Type}
+\begin{lstlisting}[caption={Array of Strings of 100 Elements}]
+  string list[100];
+\end{lstlisting}
+
+% SECTION 7.14 %
+\subsection{Array of Strings and \texttt{C-Strings}}
+\begin{lstlisting}[caption={C-String Array}]
+  char list[100][16];
+
+  strcpy(list[1], "Snow White");
+\end{lstlisting}
+
+\begin{center}
+    \includegraphics[width=0.9\textwidth]{2D-arr-c-str-matrix.png}
+\end{center}
+
+% SECTION 7.15 %
+\subsection{Another Way to Declare a Two-Dimensional Array}
+Can use \texttt{using} (or \texttt{typedef}) to define a two-dimensional array
+data type:
+
+\begin{lstlisting}[caption={\texttt{using} Two-Dimensional Array}]
+  const int NUMBER_OF_ROWS = 20;
+  const int NUMBER_OF_COLUMNS = 10;
+
+  using tableType = int[NUMBER_OF_ROWS][NUMBER_OF_COLUMNS];
+
+  // Declares array of 20 rows and 10 columns
+  tableType matrix;
+\end{lstlisting}
+
+% SECTION 7.16 %
+\subsection{Multi-Dimensional Arrays}
+\textbf{N-Dimensional Array} is a collection of a fixed number of elements
+arranged in \textit{n} dimensions, $n >= 1$.
+
+\begin{lstlisting}[caption={Multi-Dimensional Array Syntax}]
+  dataType arrayName[intExp1][intExp2]...[intExpN];
+\end{lstlisting}
+
+\begin{lstlisting}[caption={Accessing a Multi-Dimensional Array Component}]
+  arrayName[indexExp1][indexExp2]...[indexExpN]
+\end{lstlisting}
 
 \end{document}
