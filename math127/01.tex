@@ -1,0 +1,101 @@
+\documentclass{article}
+\usepackage{listings, xcolor, graphicx, inconsolata, amsmath}
+\setlength{\parindent}{0pt}
+
+\definecolor{lgray}{rgb}{0.95, 0.95, 0.95}
+\definecolor{lgray2}{rgb}{0.75, 0.75, 0.75}
+
+\lstset{
+  language=C++,
+  aboveskip=10pt,
+  belowskip=10pt,
+  frame=leftline,
+  xleftmargin=15pt,
+  framexleftmargin=20pt,
+  breaklines=true,
+  basicstyle=\small,
+  showstringspaces=false,
+  backgroundcolor=\color{lgray},
+  rulecolor=\color{lgray2},
+  basicstyle=\ttfamily\footnotesize,
+  keywordstyle=\color{blue},
+  stringstyle=\color{red},
+  commentstyle=\color{green},
+  numbers=left,               
+  numberstyle=\tiny\color{gray},
+  stepnumber=1
+}
+
+\title{MATH127; Formulae}
+\author{Gael Zarco}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+% SECTION 1 %
+\section{Distance} 
+\[
+  d = \sqrt{(x_2 - x_1)^2 + (y_2 - y_1)^2}
+\]
+
+\section{Midpoint}
+\[
+  (x_m, y_m) = (\dfrac{x_1 + x_2}{2}, \dfrac{y_1 + y_2}{2}) 
+\]
+
+\section{Pythagorean Theorem}
+\[
+  a^2 + b^2 = c^2
+\]
+\textbf{Converse of Pythagorean Theorem} states that if the longest side of a
+triangle equals the sum of the other 2 sides, it is a \textit{right} triangle.
+
+\section{General Form}
+\[
+  ax + by = c
+\]
+
+\section{Slope}
+\[
+  \dfrac{\Delta y}{\Delta x} = \dfrac{y_2 - y_1}{x_2 - x_1}
+\]
+
+\section{Point-Slope}
+\[
+  y - y_1 = m(x - x_1)
+\]
+
+\section{Area of a Triangle}
+\[
+  A = \dfrac{1}{2}bh
+\]
+
+\section{Area of a Triangle}
+\[
+  A = \dfrac{1}{2}bh
+\]
+
+\section{General Form of a Circle}
+\[
+  Ax^2 + Ay^2 + Dx + Ey + F = 0
+\]
+
+\section{Standard Form of a Circle}
+\[
+  (x - h)^2 + (y - k)^2 = r^2
+\]
+
+\begin{itemize}
+  \item Center: \texttt{(h, k)}. 
+  \item If \texttt{h} or \texttt{k} are positive in \textbf{Standard Form} 
+  $\rightarrow$ They reflect a negative value, respectively.
+\end{itemize}
+
+\section{Area of Square Inside Circle}
+\[
+  A = 2r^2
+\]
+
+\end{document}
