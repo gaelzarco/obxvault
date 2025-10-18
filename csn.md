@@ -28,6 +28,9 @@ kanban-plugin: board
 
 ## CIT260
 
+- [ ] Module 7 Quiz @{10-31-2025}
+- [ ] Technical Project - System Design @{11-14-2025}
+- [ ] In-Person Presentation @{12-05-2025}
 
 
 ## COMPLETE
