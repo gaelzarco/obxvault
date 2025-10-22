@@ -6,15 +6,15 @@ kanban-plugin: board
 
 ## MATH181
 
-- [ ] HW_4.8 @{11-17-2025}
-- [ ] HW_4.7 @{11-17-2025}
-- [ ] HW_4.6 @{11-17-2025}
-- [ ] HW_4.5 @{11-17-2025}
-- [ ] HW_4.4 @{11-17-2025}
-- [ ] HW_4.3 @{11-17-2025}
-- [ ] HW_4.2 @{11-17-2025}
 - [ ] HW_4.1 @{11-17-2025}
-- [ ] TEST_CH_3 @{10-21-2025} @@{23:45}
+- [ ] HW_4.2 @{11-17-2025}
+- [ ] HW_4.3 @{11-17-2025}
+- [ ] HW_4.4 @{11-17-2025}
+- [ ] HW_4.5 @{11-17-2025}
+- [ ] HW_4.6 @{11-17-2025}
+- [ ] HW_4.7 @{11-17-2025}
+- [ ] HW_4.8 @{11-17-2025}
+- [ ] TEST_4.X @{11-17-2025}
 
 
 ## MATH251
@@ -37,9 +37,10 @@ kanban-plugin: board
 - [ ] In-Person Presentation @{12-05-2025}
 
 
-## COMPLETE
+***
 
-**Complete**
+## Archive
+
 - [x] HW_3.10 @{10-20-2025}
 - [x] HW_3.9 @{10-20-2025}
 - [x] HW_3.8 @{10-20-2025}
@@ -50,12 +51,10 @@ kanban-plugin: board
 - [x] HW_3.3 @{10-20-2025}
 - [x] HW_3.2 @{10-20-2025}
 - [x] HW_3.1 @{10-20-2025}
-
-
-
+- [x] TEST_CH_3 @{10-21-2025} @@{23:45}
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false]}
 ```
 %%

@@ -2,6 +2,6 @@
 
 ## Obsidian Notes Vault
 
-### My personal vault for development notes and other related topics.
+### My personal vault for notes, school, and stuff.
 
 </div>
