@@ -6,7 +6,7 @@ kanban-plugin: board
 
 ## MATH181
 
-- [ ] HW_4.1 @{11-17-2025}
+- [x] HW_4.1 @{11-17-2025}
 - [ ] HW_4.2 @{11-17-2025}
 - [ ] HW_4.3 @{11-17-2025}
 - [ ] HW_4.4 @{11-17-2025}
@@ -19,16 +19,29 @@ kanban-plugin: board
 
 ## MATH251
 
+- [ ] PROJ 1 @{11-16-2025}
+	
+	https://csn.instructure.com/courses/1408434/pages/project-1?module_item_id=19043787
 
 
 ## CS202
 
+- [ ] PA 16 @{11-09-2025}
+	
+	https://csn.instructure.com/courses/1410017/assignments/7744309?module_item_id=19052464
+- [ ] QUIZ 16 @{11-09-2025}
+	
+	https://csn.instructure.com/courses/1410017/quizzes/2440917?module_item_id=19052557
 
 
 ## CIT260
 
 - [ ] Technical Project - System Design @{11-14-2025}
+	
+	https://csn.instructure.com/courses/1407249/assignments/7713276
 - [ ] In-Person Presentation @{12-05-2025}
+	
+	https://csn.instructure.com/courses/1407249/assignments/7713278
 
 
 ***
