@@ -7,12 +7,11 @@ kanban-plugin: board
 ## MATH181
 
 - [x] HW_4.1 @{11-17-2025}
-- [ ] HW_4.2 @{11-17-2025}
+- [x] HW_4.2 @{11-17-2025}
 - [ ] HW_4.3 @{11-17-2025}
 - [ ] HW_4.4 @{11-17-2025}
 - [ ] HW_4.5 @{11-17-2025}
 - [ ] HW_4.6 @{11-17-2025}
-- [ ] HW_4.7 @{11-17-2025}
 - [ ] HW_4.8 @{11-17-2025}
 - [ ] TEST_4.X @{11-17-2025}
 
@@ -29,7 +28,7 @@ kanban-plugin: board
 - [ ] PA 16 @{11-09-2025}
 	
 	https://csn.instructure.com/courses/1410017/assignments/7744309?module_item_id=19052464
-- [ ] QUIZ 16 @{11-09-2025}
+- [x] QUIZ 16 @{11-09-2025}
 	
 	https://csn.instructure.com/courses/1410017/quizzes/2440917?module_item_id=19052557
 
