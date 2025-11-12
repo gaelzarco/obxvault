@@ -18,9 +18,6 @@ kanban-plugin: board
 - [ ] PROJ 1 @{11-16-2025}
 	
 	https://csn.instructure.com/courses/1408434/pages/project-1?module_item_id=19043787
-- [ ] HW7.1 @{11-16-2025}
-- [ ] HW7.2 @{11-16-2025}
-- [ ] HW7.3 @{11-16-2025}
 
 
 ## CS202
@@ -84,6 +81,9 @@ kanban-plugin: board
 - [x] HW_4.1 @{11-17-2025}
 - [x] HW_4.2 @{11-17-2025}
 - [x] HW_4.8 @{11-17-2025}
+- [x] HW7.1 @{11-16-2025}
+- [x] HW7.2 @{11-16-2025}
+- [x] HW7.3 @{11-16-2025}
 
 %% kanban:settings
 ```
