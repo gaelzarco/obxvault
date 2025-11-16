@@ -38,7 +38,11 @@ kanban-plugin: board
 - [ ] INSTITUTIONAL AID APP **FIRST COME FIRST SERVE**
 	
 	https://unlv.my.site.com/selfservice/login?ec=302&startURL=%2Fselfservice%2Fs%2Finstitutional-aid-application
-- [ ] [[meenmeen]]
+
+
+## GF
+
+- [x] [[meenmeen]]
 
 
 ***
@@ -88,6 +92,6 @@ kanban-plugin: board
 
 %% kanban:settings
 ```
-{"kanban-plugin":"board","list-collapse":[false,false,false,false,false]}
+{"kanban-plugin":"board","list-collapse":[false,false,false,false,false,false]}
 ```
 %%
