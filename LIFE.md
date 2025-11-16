@@ -6,32 +6,23 @@ kanban-plugin: board
 
 ## MATH181
 
-- [ ] HW_4.3 @{11-17-2025}
-- [ ] HW_4.4 @{11-17-2025}
-- [ ] HW_4.5 @{11-17-2025}
-- [ ] HW_4.6 @{11-17-2025}
-- [ ] TEST_4.X @{11-17-2025}
+- [ ] HW_4.4 @{11-17-2025} @@{23:45}
+- [ ] HW_4.5 @{11-17-2025} @@{23:45}
+- [ ] HW_4.6 @{11-17-2025} @@{23:45}
+- [ ] TEST_4.X @{11-17-2025} @@{23:45}
 
 
 ## MATH251
 
-- [ ] PROJ 1 @{11-16-2025}
-	
-	https://csn.instructure.com/courses/1408434/pages/project-1?module_item_id=19043787
 
 
 ## CS202
 
-- [ ] PA17A @{11-16-2025}
-- [ ] 17A LECTURE/NOTES @{11-16-2025}
 
 
 ## CIT260
 
-- [ ] Technical Project - System Design @{11-14-2025}
-	
-	https://csn.instructure.com/courses/1407249/assignments/7713276
-- [ ] In-Person Presentation @{12-05-2025}
+- [ ] In-Person Presentation @{12-12-2025}
 	
 	https://csn.instructure.com/courses/1407249/assignments/7713278
 
@@ -47,12 +38,18 @@ kanban-plugin: board
 - [ ] INSTITUTIONAL AID APP **FIRST COME FIRST SERVE**
 	
 	https://unlv.my.site.com/selfservice/login?ec=302&startURL=%2Fselfservice%2Fs%2Finstitutional-aid-application
+- [ ] [[meenmeen]]
 
 
 ***
 
 ## Archive
 
+- [x] PROJ 1 @{11-16-2025}
+	
+	https://csn.instructure.com/courses/1408434/pages/project-1?module_item_id=19043787
+- [x] PA17A @{11-16-2025}
+- [x] 17A LECTURE/NOTES @{11-16-2025}
 - [x] PA 16 @{11-09-2025}
 	
 	https://csn.instructure.com/courses/1410017/assignments/7744309?module_item_id=19052464
@@ -84,6 +81,10 @@ kanban-plugin: board
 - [x] HW7.1 @{11-16-2025}
 - [x] HW7.2 @{11-16-2025}
 - [x] HW7.3 @{11-16-2025}
+- [x] Technical Project - System Design @{11-14-2025}
+	
+	https://csn.instructure.com/courses/1407249/assignments/7713276
+- [x] HW_4.3 @{11-17-2025}
 
 %% kanban:settings
 ```
