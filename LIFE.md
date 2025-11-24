@@ -16,14 +16,10 @@ kanban-plugin: board
 
 ## MATH251
 
-- [ ] 7.X TEST @{11-20-2025}
 
 
 ## CS202
 
-- [ ] PA17B @{11-23-2025}
-- [ ] 17B LECTURE + NOTES @{11-23-2025}
-- [ ] QUIZ 17B @{11-23-2025}
 
 
 ## CIT260
@@ -55,6 +51,7 @@ kanban-plugin: board
 
 ## Archive
 
+- [x] 7.X TEST @{11-20-2025}
 - [x] HW_4.4 @{11-17-2025} @@{23:45}
 - [x] HW_4.5 @{11-17-2025} @@{23:45}
 - [x] HW_4.6 @{11-17-2025} @@{23:45}
@@ -99,6 +96,9 @@ kanban-plugin: board
 	
 	https://csn.instructure.com/courses/1407249/assignments/7713276
 - [x] HW_4.3 @{11-17-2025}
+- [x] PA17B @{11-23-2025}
+- [x] 17B LECTURE + NOTES @{11-23-2025}
+- [x] QUIZ 17B @{11-23-2025}
 
 %% kanban:settings
 ```
