@@ -7,7 +7,6 @@ kanban-plugin: board
 ## MATH181
 
 - [ ] 5.1 HOMEWORK @{12-08-2025}
-- [ ] 5.4 HOMEWORK @{12-08-2025}
 - [ ] 5.5 HOMEWORK @{12-08-2025}
 - [ ] 5.X TEST @{12-08-2025}
 
@@ -95,6 +94,7 @@ kanban-plugin: board
 - [x] QUIZ 17B @{11-23-2025}
 - [x] 5.2 HOMEWORK @{12-08-2025}
 - [x] 5.3 HOMEWORK @{12-08-2025}
+- [x] 5.4 HOMEWORK @{12-08-2025}
 
 %% kanban:settings
 ```
